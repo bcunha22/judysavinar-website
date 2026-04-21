@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Judy Savinar</title>
+<meta name="description" content="Stories, essays, and dispatches from Judy Savinar, author of Kissing Strangers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F8F8F8;
+    --ink: #1A1A2E;
+    --muted: #6B7280;
+    --rule: #D9DCE3;
+    --accent: #2B5BA8;
+    --accent-dark: #1A3D7A;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+
+    /*
+    =====================================================
+    SUBSTACK SETUP — edit this one line when Judy's
+    Substack is ready, e.g. judysavinar.substack.com
+    =====================================================
+    */
+    --substack-url: "judysavinar.substack.com";
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(248, 248, 248, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+  .nav-buy {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 0.5rem 1.25rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-buy:hover { background: var(--accent); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 8rem 5vw 4rem;
+    border-bottom: 0.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+  }
+
+  .page-header-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .page-header h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.05;
+  }
+
+  .page-header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .page-header-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 42ch;
+    margin-bottom: 2rem;
+  }
+
+  /* NEWSLETTER INLINE */
+  .subscribe-inline {
+    display: flex;
+    gap: 0;
+    max-width: 400px;
+  }
+
+  .subscribe-inline input {
+    flex: 1;
+    background: white;
+    border: 0.5px solid var(--rule);
+    border-right: none;
+    padding: 0.7rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    border-radius: 0;
+  }
+
+  .subscribe-inline input::placeholder { color: var(--muted); }
+  .subscribe-inline input:focus { border-color: var(--accent); }
+
+  .subscribe-inline button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.25rem;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .subscribe-inline button:hover { background: var(--accent-dark); }
+
+  .subscribe-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.6rem;
+  }
+
+  /* COMING SOON BANNER */
+  .coming-soon-banner {
+    background: #EEF2FA;
+    border-bottom: 0.5px solid var(--rule);
+    padding: 1rem 5vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.82rem;
+    color: var(--accent-dark);
+  }
+
+  .banner-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* BLOG LAYOUT */
+  .blog-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    min-height: 60vh;
+  }
+
+  /* POSTS AREA */
+  .posts-area {
+    padding: 4rem 4rem 6rem 5vw;
+    border-right: 0.5px solid var(--rule);
+  }
+
+  /* COMING SOON STATE */
+  .coming-soon-state {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem 0;
+  }
+
+  .coming-soon-icon {
+    width: 56px;
+    height: 56px;
+    border: 0.5px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .coming-soon-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .coming-soon-state h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .coming-soon-state h2 em { font-style: italic; color: var(--accent); }
+
+  .coming-soon-state p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--muted);
+    max-width: 48ch;
+    margin-bottom: 1rem;
+  }
+
+  /* PREVIEW POST CARDS — placeholder style */
+  .preview-posts {
+    margin-top: 4rem;
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .preview-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 1.5rem 0 0;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .post-card {
+    padding: 2rem 0;
+    border-bottom: 0.5px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    opacity: 0.4;
+    filter: blur(2px);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .post-card-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .post-card-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+
+  .post-card-excerpt {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 52ch;
+  }
+
+  .post-card-date {
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 0.25rem;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    padding: 4rem 2rem 4rem 2.5rem;
+  }
+
+  .sidebar-section {
+    margin-bottom: 3rem;
+  }
+
+  .sidebar-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    display: block;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  /* SIDEBAR NEWSLETTER */
+  .sidebar-subscribe {
+    background: var(--ink);
+    padding: 2rem 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .sidebar-subscribe h3 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .sidebar-subscribe h3 em { font-style: italic; color: #7BA3E0; }
+
+  .sidebar-subscribe p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-subscribe input {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    padding: 0.65rem 0.85rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: white;
+    outline: none;
+    border-radius: 0;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+
+  .sidebar-subscribe input::placeholder { color: rgba(255,255,255,0.3); }
+  .sidebar-subscribe input:focus { border-color: rgba(255,255,255,0.4); }
+
+  .sidebar-subscribe button {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .sidebar-subscribe button:hover { background: var(--accent-dark); }
+
+  .sidebar-subscribe .sub-note {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* ABOUT SIDEBAR */
+  .sidebar-about img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-about h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .sidebar-about p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-about a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--accent);
+    padding-bottom: 1px;
+    transition: opacity 0.2s;
+  }
+
+  .sidebar-about a:hover { opacity: 0.7; }
+
+  /* TOPICS */
+  .topics-list {
+    list-style: none;
+  }
+
+  .topics-list li {
+    padding: 0.6rem 0;
+    border-bottom: 0.5px solid var(--rule);
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .topics-list li a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .topics-list li a:hover { color: var(--accent); }
+
+  .topic-count {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  /* NEWSLETTER SECTION (full-width) */
+  .newsletter-section {
+    background: var(--ink);
+    padding: 6rem 5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .newsletter-text h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .newsletter-text h2 em { font-style: italic; color: #7BA3E0; }
+
+  .newsletter-text p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+    max-width: 44ch;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .newsletter-form .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .newsletter-form input {
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 0.8rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: white;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .newsletter-form input::placeholder { color: rgba(255,255,255,0.3); }
+  .newsletter-form input:focus { border-color: rgba(255,255,255,0.35); }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .newsletter-form button:hover { background: #1A3D7A; }
+
+  .newsletter-perks {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .newsletter-perks li {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .newsletter-perks li::before {
+    content: '';
+    width: 16px;
+    height: 0.5px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .newsletter-form .form-note {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.5;
+  }
+
+  /* SUCCESS STATE */
+  .success-msg {
+    display: none;
+    background: rgba(43, 91, 168, 0.12);
+    border: 0.5px solid rgba(43, 91, 168, 0.3);
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: #7BA3E0;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--rule);
+    padding: 3rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+  }
+
+  .footer-contact {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .footer-contact a { color: var(--ink); text-decoration: none; }
+
+  .footer-social {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-social a {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-social a:hover { color: var(--ink); }
+
+  .footer-copy {
+    width: 100%;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--rule);
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--rule);
+    margin-top: 1rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+
+    .page-header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 7rem 1.25rem 3rem;
+    }
+
+    .blog-layout { grid-template-columns: 1fr; }
+    .posts-area { padding: 3rem 1.25rem; border-right: none; }
+    .sidebar { padding: 0 1.25rem 3rem; border-top: 0.5px solid var(--rule); }
+
+    .newsletter-section {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 4rem 1.25rem;
+    }
+
+    .newsletter-form .field-row { grid-template-columns: 1fr; }
+    .newsletter-form button { width: 100%; }
+
+    .subscribe-inline { flex-direction: column; max-width: 100%; }
+    .subscribe-inline input { border-right: 0.5px solid var(--rule); border-bottom: none; }
+    .subscribe-inline button { width: 100%; }
+
+    footer { padding: 2.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
+
+    .post-card { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Judy Savinar</a>
+  <ul class="nav-links">
+    <li><a href="index.html#book">The Book</a></li>
+    <li><a href="index.html#about">About Judy</a></li>
+    <li><a href="index.html#book-clubs">Book Clubs</a></li>
+    <li><a href="index.html#buy">Where to Buy</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+  </ul>
+  <a class="nav-buy" href="https://a.co/d/3wrMcHH" target="_blank" rel="noopener">Buy Now</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div>
+    <span class="page-header-label">Judy Savinar</span>
+    <h1>Stories &<br><em>Dispatches</em></h1>
+  </div>
+  <div>
+    <p class="page-header-desc">Essays on writing, life after sixty, the stories we tell ourselves, and the ones we can't stop telling others. New posts delivered to your inbox — no noise, just words.</p>
+    <div class="subscribe-inline">
+      <input type="email" id="header-email" placeholder="your@email.com" aria-label="Email address">
+      <button onclick="handleHeaderSubscribe()">Subscribe</button>
+    </div>
+    <p class="subscribe-note">Via Substack. Free. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- COMING SOON BANNER -->
+<div class="coming-soon-banner">
+  <div class="banner-dot"></div>
+  <span>The blog is coming soon — subscribe below to be the first to read Judy's essays when they go live.</span>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="blog-layout">
+
+  <!-- POSTS AREA -->
+  <div class="posts-area">
+    <div class="coming-soon-state">
+      <div class="coming-soon-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+        </svg>
+      </div>
+      <h2>Judy is <em>writing</em>.<br>Posts coming soon.</h2>
+      <p>This is where Judy will write about the long, winding road to a first novel — the false starts, the characters who refused to behave, and the strange joy of finally letting them loose on the world.</p>
+      <p>Expect essays on the writing life, reflections on what it means to tell women's stories honestly, and the occasional dispatch from Portland about wine, dogs, and getting things wrong in interesting ways.</p>
+    </div>
+
+    <!-- BLURRED PLACEHOLDER POSTS -->
+    <div class="preview-posts" aria-hidden="true">
+      <span class="preview-label">A glimpse of what's coming</span>
+
+      <div class="post-card">
+        <div>
+          <span class="post-card-tag">Writing Life</span>
+          <h3 class="post-card-title">Why I Wrote Ten Women Instead of One</h3>
+          <p class="post-card-excerpt">Every story in Kissing Strangers began as a voice I couldn't silence. Here's how ten women I'd never met ended up living rent-free in my head for years before finding the page.</p>
+        </div>
+        <span class="post-card-date">Coming soon</span>
+      </div>
+
+      <div class="post-card">
+        <div>
+          <span class="post-card-tag">On Fiction</span>
+          <h3 class="post-card-title">The Character Who Almost Broke the Book</h3>
+          <p class="post-card-excerpt">Meg wasn't supposed to unravel the way she did. But fiction has a way of ignoring your outline and going somewhere rawer, truer, and considerably more inconvenient.</p>
+        </div>
+        <span class="post-card-date">Coming soon</span>
+      </div>
+
+      <div class="post-card">
+        <div>
+          <span class="post-card-tag">Life & Writing</span>
+          <h3 class="post-card-title">What Advertising Copywriting Taught Me About Short Fiction</h3>
+          <p class="post-card-excerpt">Years of writing ads in San Francisco taught me to cut ruthlessly, land a hook fast, and never waste a word. Turns out that's not bad training for short stories either.</p>
+        </div>
+        <span class="post-card-date">Coming soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- NEWSLETTER BOX -->
+    <div class="sidebar-subscribe">
+      <h3>Stay in<br><em>the story</em></h3>
+      <p>Essays on writing, women, life, and the stories that refuse to stay quiet — delivered free to your inbox.</p>
+      <input type="email" id="sidebar-email" placeholder="your@email.com" aria-label="Email address">
+      <button onclick="handleSidebarSubscribe()">Subscribe free</button>
+      <p class="sub-note">Via Substack. No spam. Unsubscribe anytime.</p>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="sidebar-section sidebar-about">
+      <span class="sidebar-label">About the author</span>
+      <img src="judy_3.JPG" alt="Judy Savinar">
+      <h4>Judy Savinar</h4>
+      <p>Storyteller, former ad copywriter, middle school librarian, Portland resident. Author of <em>Kissing Strangers</em>.</p>
+      <a href="index.html#about">Read full bio →</a>
+    </div>
+
+    <!-- TOPICS -->
+    <div class="sidebar-section">
+      <span class="sidebar-label">Topics</span>
+      <ul class="topics-list">
+        <li><a href="#">Writing Life</a><span class="topic-count">—</span></li>
+        <li><a href="#">On Fiction</a><span class="topic-count">—</span></li>
+        <li><a href="#">Life & Observations</a><span class="topic-count">—</span></li>
+        <li><a href="#">Behind the Book</a><span class="topic-count">—</span></li>
+        <li><a href="#">Portland & Oregon</a><span class="topic-count">—</span></li>
+      </ul>
+    </div>
+
+    <!-- BUY -->
+    <div class="sidebar-section">
+      <span class="sidebar-label">The book</span>
+      <img src="JSavinar_Kissing_FRTCVR.jpg" alt="Kissing Strangers" style="width:100%; display:block; margin-bottom:1rem;">
+      <a href="https://a.co/d/3wrMcHH" target="_blank" rel="noopener" style="display:block; background:var(--ink); color:white; text-align:center; padding:0.8rem; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='var(--ink)'">Buy Kissing Strangers</a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FULL-WIDTH NEWSLETTER -->
+<section class="newsletter-section" id="newsletter">
+  <div class="newsletter-text">
+    <h2>Get Judy's words<br>in your <em>inbox</em></h2>
+    <p>Essays on the writing life, reflections on women and fiction, dispatches from Portland, and whatever else Judy can't stop thinking about. Published on Substack — free, always.</p>
+    <ul class="newsletter-perks">
+      <li>Personal essays on writing & life</li>
+      <li>Behind-the-scenes stories from Kissing Strangers</li>
+      <li>Upcoming events and readings</li>
+      <li>Honest dispatches, no filler</li>
+    </ul>
+  </div>
+  <div>
+    <div class="newsletter-form" id="newsletter-form">
+      <div class="field-row">
+        <input type="text" id="nl-first" placeholder="First name" aria-label="First name">
+        <input type="text" id="nl-last" placeholder="Last name" aria-label="Last name">
+      </div>
+      <input type="email" id="nl-email" placeholder="Email address" aria-label="Email address">
+      <button onclick="handleNewsletterSubscribe()">Subscribe — it's free</button>
+      <p class="form-note">By subscribing you agree to receive emails from Judy Savinar via Substack. Unsubscribe at any time.</p>
+    </div>
+    <div class="success-msg" id="success-msg">
+      You're on the list. Judy will be in touch the moment she publishes — keep an eye on your inbox.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Judy Savinar</div>
+  <div class="footer-contact">
+    <a href="mailto:judy@judysavinar.com">judy@judysavinar.com</a><br>
+    Portland, Oregon
+  </div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/judysavinar/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/judy-savinar-b43bb53/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p class="footer-copy">© 2025 Judy Savinar. All rights reserved.</p>
+</footer>
+
+<script>
+  /*
+  ====================================================
+  SUBSTACK INTEGRATION
+  When Judy's Substack is ready, replace the URL below
+  with her actual publication URL, e.g.:
+  const SUBSTACK_URL = "https://judysavinar.substack.com";
+  ====================================================
+  */
+  const SUBSTACK_URL = null; // e.g. "https://judysavinar.substack.com"
+
+  function subscribeToSubstack(email) {
+    if (SUBSTACK_URL) {
+      window.open(`${SUBSTACK_URL}/subscribe?email=${encodeURIComponent(email)}`, '_blank');
+      return true;
+    }
+    return false;
+  }
+
+  function handleHeaderSubscribe() {
+    const email = document.getElementById('header-email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('header-email').focus();
+      return;
+    }
+    if (!subscribeToSubstack(email)) {
+      showComingSoonAlert(email);
+    }
+  }
+
+  function handleSidebarSubscribe() {
+    const email = document.getElementById('sidebar-email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('sidebar-email').focus();
+      return;
+    }
+    if (!subscribeToSubstack(email)) {
+      showComingSoonAlert(email);
+    }
+  }
+
+  function handleNewsletterSubscribe() {
+    const email = document.getElementById('nl-email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('nl-email').focus();
+      return;
+    }
+    if (!subscribeToSubstack(email)) {
+      document.getElementById('newsletter-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    }
+  }
+
+  function showComingSoonAlert(email) {
+    // Temporary message until Substack is set up
+    alert(`Thanks! We'll make sure ${email} is added when the newsletter launches.`);
+  }
+
+  // Allow Enter key on email inputs
+  document.querySelectorAll('input[type="email"]').forEach(input => {
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        const btn = input.nextElementSibling;
+        if (btn && btn.tagName === 'BUTTON') btn.click();
+      }
+    });
+  });
+</script>
+</body>
+</html>

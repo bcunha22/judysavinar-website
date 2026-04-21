@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judy Savinar — Author of Kissing Strangers</title>
+<meta name="description" content="Judy Savinar is the author of Kissing Strangers, a collection of ten unforgettable short stories about women navigating life's boldest turns.">
+<meta property="og:title" content="Judy Savinar — Author of Kissing Strangers">
+<meta property="og:description" content="Ten stories. Ten remarkable women. Bold, messy, and ready to be heard.">
+<meta property="og:image" content="https://framerusercontent.com/images/7ckLAPZwd4Kas1XGeIEiUKOfRvE.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F8F8F8;
+    --ink: #1A1A2E;
+    --muted: #6B7280;
+    --rule: #D9DCE3;
+    --accent: #2B5BA8;
+    --accent-dark: #1A3D7A;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 248, 243, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-buy {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 0.5rem 1.25rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-buy:hover { background: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 5vw;
+    border-right: 0.5px solid var(--rule);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-byline {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-desc {
+    font-size: 1.0rem;
+    line-height: 1.8;
+    color: var(--ink);
+    max-width: 42ch;
+    margin-bottom: 3rem;
+    opacity: 0.85;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-ghost {
+    display: inline-block;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 0.5px solid var(--rule);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  .hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 3rem;
+    background: #EEF2FA;
+  }
+
+  .hero-image img {
+    max-height: 72vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    box-shadow: 12px 20px 60px rgba(28, 25, 21, 0.18);
+  }
+
+  /* SECTION SHARED */
+  section {
+    padding: 6rem 5vw;
+  }
+
+  .section-rule {
+    border: none;
+    border-top: 0.5px solid var(--rule);
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    display: block;
+  }
+
+  /* ABOUT BOOK */
+  .about-book {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-book h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+
+  .about-book h2 em { font-style: italic; color: var(--accent); }
+
+  .about-book p {
+    font-size: 1.0rem;
+    line-height: 1.85;
+    color: var(--ink);
+    opacity: 0.85;
+    margin-bottom: 1.25rem;
+  }
+
+  .story-list {
+    list-style: none;
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .story-list li {
+    padding: 1rem 0;
+    border-bottom: 0.5px solid var(--rule);
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+
+  .story-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    min-width: 1.5rem;
+  }
+
+  .story-name {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* REVIEWS */
+  .reviews-section {
+    background: #1A1A2E;
+    color: var(--cream);
+    padding: 6rem 5vw;
+  }
+
+  .reviews-section .section-label { color: rgba(250,248,243,0.4); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .review-card {
+    padding: 2.5rem 2rem;
+    border: 0.5px solid rgba(250,248,243,0.1);
+  }
+
+  .review-quote {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .review-quote::before { content: '\201C'; }
+  .review-quote::after  { content: '\201D'; }
+
+  .review-author {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(250,248,243,0.45);
+  }
+
+  /* MEET JUDY */
+  .meet-judy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .judy-photo {
+    position: relative;
+  }
+
+  .judy-photo img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  .judy-photo::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 100%;
+    height: 100%;
+    border: 0.5px solid var(--rule);
+    z-index: -1;
+  }
+
+  .judy-text h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+
+  .judy-text p {
+    font-size: 1.0rem;
+    line-height: 1.85;
+    color: var(--ink);
+    opacity: 0.85;
+    margin-bottom: 1.25rem;
+  }
+
+  /* BOOK CLUBS */
+  .book-clubs {
+    background: #EEF2FA;
+    padding: 6rem 5vw;
+  }
+
+  .book-clubs-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .book-clubs h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .book-clubs p {
+    font-size: 1.0rem;
+    line-height: 1.85;
+    opacity: 0.85;
+    margin-bottom: 1.25rem;
+  }
+
+  .club-features {
+    list-style: none;
+    margin: 2rem 0;
+  }
+
+  .club-features li {
+    padding: 0.75rem 0;
+    border-bottom: 0.5px solid var(--rule);
+    font-size: 0.9rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .club-features li::before {
+    content: '—';
+    color: var(--accent);
+    font-family: var(--serif);
+  }
+
+  .contact-form {
+    background: var(--cream);
+    padding: 2.5rem;
+  }
+
+  .contact-form h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-form p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    opacity: 1;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: transparent;
+    border: 0.5px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.65rem 0.75rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--ink);
+  }
+
+  .form-group textarea { min-height: 90px; resize: vertical; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 0.9rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--accent); }
+
+  /* WHERE TO BUY */
+  .buy-section {
+    padding: 6rem 5vw;
+  }
+
+  .buy-section h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    margin-bottom: 3rem;
+  }
+
+  .retailers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    border: 0.5px solid var(--rule);
+  }
+
+  .retailer {
+    padding: 2rem 1.5rem;
+    border: 0.5px solid var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .retailer:hover { background: var(--ink); color: var(--cream); }
+  .retailer:hover .retailer-loc { color: rgba(250,248,243,0.5); }
+
+  .retailer-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  .retailer-loc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .retailer-cta {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--rule);
+    padding: 3rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+  }
+
+  .footer-contact {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .footer-contact a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-social a {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-social a:hover { color: var(--ink); }
+
+  .footer-copy {
+    width: 100%;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--rule);
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--rule);
+    margin-top: 1rem;
+  }
+
+  /* FADE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .fade-up-2 { animation-delay: 0.15s; }
+  .fade-up-3 { animation-delay: 0.3s; }
+  .fade-up-4 { animation-delay: 0.45s; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-text {
+      padding: 3rem 1.25rem;
+      border-right: none;
+      border-bottom: 0.5px solid var(--rule);
+      order: 2;
+    }
+
+    .hero-image {
+      order: 1;
+      padding: 3rem 2rem;
+      min-height: 55vw;
+    }
+
+    .hero-image img { max-height: 50vw; }
+
+    section { padding: 4rem 1.25rem; }
+    .book-clubs { padding: 4rem 1.25rem; }
+    .buy-section { padding: 4rem 1.25rem; }
+    .reviews-section { padding: 4rem 1.25rem; }
+    footer { padding: 2.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
+
+    .about-book,
+    .meet-judy,
+    .book-clubs-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .judy-photo::after { display: none; }
+
+    .hero-title { font-size: clamp(2.8rem, 12vw, 4rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Judy Savinar</a>
+  <ul class="nav-links">
+    <li><a href="#book">The Book</a></li>
+    <li><a href="#about">About Judy</a></li>
+    <li><a href="#book-clubs">Book Clubs</a></li>
+    <li><a href="#buy">Where to Buy</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <a class="nav-buy" href="https://a.co/d/3wrMcHH" target="_blank" rel="noopener">Buy Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow fade-up">A debut short story collection</p>
+    <h1 class="hero-title fade-up fade-up-2"><em>Kissing<br>Strangers</em></h1>
+    <p class="hero-byline fade-up fade-up-3">by Judy Savinar</p>
+    <p class="hero-desc fade-up fade-up-4">Ten women. Ten stories. Empty nests, aging parents, heartbreak, desire — and twists that flip the script. Bold, messy, and entirely unforgettable.</p>
+    <div class="hero-actions fade-up fade-up-4">
+      <a class="btn-primary" href="https://a.co/d/3wrMcHH" target="_blank" rel="noopener">Buy on Amazon</a>
+      <a class="btn-ghost" href="#book">Read more ↓</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="JSavinar_Kissing_FRTCVR.jpg" alt="Kissing Strangers by Judy Savinar — book cover">
+  </div>
+</section>
+
+<!-- ABOUT THE BOOK -->
+<section id="book">
+  <hr class="section-rule">
+  <span class="section-label">About the book</span>
+  <div class="about-book">
+    <div>
+      <h2>Ten stories.<br>Ten remarkable<br><em>women.</em></h2>
+      <p>We begin with Lorna — newly divorced and bound for Omaha, where a stranger on a plane shatters the controlled world she's built. From there, the collection moves through Bianca, Tootsie, Louise, and Stephanie, whose obsession with a childhood object keeps her depression at bay — but for how long?</p>
+      <p>Lourdes, Amy, Joy, and Meg follow. Haunted by her dead husband, Meg's mental health begins to unravel, threatening to destroy the life her daughter has built. And finally, Millicent — whose lifelong friendship with Dotty is tested by a terminal diagnosis, where survival becomes something different than either of them imagined.</p>
+      <p>These are post-menopausal women living loudly. Read them without judgment. They'll stay with you.</p>
+    </div>
+    <div>
+      <ul class="story-list">
+        <li><span class="story-num">i.</span><span class="story-name">Lorna</span></li>
+        <li><span class="story-num">ii.</span><span class="story-name">Bianca</span></li>
+        <li><span class="story-num">iii.</span><span class="story-name">Tootsie</span></li>
+        <li><span class="story-num">iv.</span><span class="story-name">Louise</span></li>
+        <li><span class="story-num">v.</span><span class="story-name">Stephanie</span></li>
+        <li><span class="story-num">vi.</span><span class="story-name">Lourdes</span></li>
+        <li><span class="story-num">vii.</span><span class="story-name">Amy</span></li>
+        <li><span class="story-num">viii.</span><span class="story-name">Joy</span></li>
+        <li><span class="story-num">ix.</span><span class="story-name">Meg</span></li>
+        <li><span class="story-num">x.</span><span class="story-name">Millicent</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<div class="reviews-section">
+  <hr style="border:none; border-top: 0.5px solid rgba(250,248,243,0.1); margin-bottom: 4rem;">
+  <span class="section-label">Reader reviews</span>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <p class="review-quote">Beautifully written. The author teleports you into the lives of ten different women. I've never read a book that so successfully encapsulates what it feels like to actually be the protagonist — and this book does it ten times.</p>
+      <p class="review-author">Jacob — Verified Purchase</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">A gifted storyteller with a genius for humor and crisp, gripping narrative. Judy invites us in for an alluring glimpse into the unique journeys of ten intriguing women. You just might see yourself in any one of them.</p>
+      <p class="review-author">CAJ — Verified Purchase</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">This collection had me hooked from the very first page, making it nearly impossible to put down. The author masterfully crafts complex, relatable characters — each brimming with raw emotions and navigating situations ranging from the beautifully mundane to the utterly shocking.</p>
+      <p class="review-author">Lindsay Deacon — Verified Purchase</p>
+    </div>
+    <div class="review-card">
+      <p class="review-quote">Each story written a bit differently in style, but all have a page-turning clip. The characters had me absorbed from the first sentence. It was my buddy while traveling through California — flying or sipping solo in a hotel bar in San Francisco.</p>
+      <p class="review-author">Janelle Baglien — Verified Purchase</p>
+    </div>
+  </div>
+</div>
+
+<!-- MEET JUDY -->
+<section id="about">
+  <hr class="section-rule">
+  <span class="section-label">Meet the author</span>
+  <div class="meet-judy">
+    <div class="judy-photo">
+      <img src="judy_3.JPG" alt="Judy Savinar, author">
+    </div>
+    <div class="judy-text">
+      <h2>Judy<br><em>Savinar</em></h2>
+      <p>For the love of stories, Judy has been writing since she discovered that Ticonderoga pencils were the bomb of pencils. From a young age, she filled endless pages — some with endings, some left to dangle forever. She told stories, too. Someday, she imagined, she would write from a rooftop garret in Paris while birds landed on the windowsill and she sipped wine.</p>
+      <p>The closest she got: a French wine with a bird on the label. Still, she kept writing throughout school, through college, and as an advertising copywriter in San Francisco and Portland.</p>
+      <p>Then she switched gears — teaching middle school writing and guiding young readers as a school librarian.</p>
+      <p>Telling stories is what she does. It's what she has always loved. And, believe her, this she is not making up.</p>
+      <p style="font-size: 0.88rem; color: var(--muted); margin-top: 0.5rem;">Portland, Oregon — with husband Dan, dog Penny, and a well-stocked wine rack.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK CLUBS -->
+<div class="book-clubs" id="book-clubs">
+  <hr class="section-rule">
+  <span class="section-label">For book clubs</span>
+  <div class="book-clubs-inner">
+    <div>
+      <h2>Bring these women<br>to your <em>book club</em></h2>
+      <p>Kissing Strangers is an ideal book club pick — ten self-contained stories make for a rich, flexible discussion. You can read the whole collection or focus on the stories that resonate most with your group.</p>
+      <p>Judy is available for in-person readings in the Portland area and virtual visits with book clubs anywhere. Reach out to arrange something.</p>
+      <ul class="club-features">
+        <li>Virtual or in-person author visits</li>
+        <li>Discussion questions available on request</li>
+        <li>Bulk order discounts for groups</li>
+        <li>Live readings & Q&A sessions</li>
+      </ul>
+    </div>
+    <div class="contact-form">
+      <h3>Get in touch</h3>
+      <p>Tell Judy a bit about your group and what you have in mind.</p>
+      <form action="mailto:judy@judysavinar.com" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label>Your name</label>
+          <input type="text" name="name" placeholder="Jane Smith">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>What you're looking for</label>
+          <select name="type">
+            <option value="">Select one</option>
+            <option>Book club visit (virtual)</option>
+            <option>Book club visit (in-person)</option>
+            <option>Live reading / event</option>
+            <option>Bulk order inquiry</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell me about your group, approximate date, and location..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- WHERE TO BUY -->
+<section class="buy-section" id="buy">
+  <hr class="section-rule">
+  <h2>Where to find<br><em>Kissing Strangers</em></h2>
+  <div class="retailers">
+    <a class="retailer" href="https://a.co/d/hO6HwRQ" target="_blank" rel="noopener">
+      <span class="retailer-name">Amazon</span>
+      <span class="retailer-loc">Worldwide</span>
+      <span class="retailer-cta">Shop →</span>
+    </a>
+    <a class="retailer" href="https://www.barnesandnoble.com/w/kissing-strangers-judy-savinar/1146599160" target="_blank" rel="noopener">
+      <span class="retailer-name">Barnes & Noble</span>
+      <span class="retailer-loc">barnesandnoble.com</span>
+      <span class="retailer-cta">Shop →</span>
+    </a>
+    <a class="retailer" href="https://dudleysbookshopcafe.com/item/31bLI66o3WejESFoS66Mpg" target="_blank" rel="noopener">
+      <span class="retailer-name">Dudley's Bookshop Café</span>
+      <span class="retailer-loc">Bend, OR</span>
+      <span class="retailer-cta">Shop →</span>
+    </a>
+    <a class="retailer" href="https://bookshop.org/p/books/kissing-strangers/cfde86dbb4c02e44?ean=9781964251189&next=t" target="_blank" rel="noopener">
+      <span class="retailer-name">Lucy's Books</span>
+      <span class="retailer-loc">Astoria, OR</span>
+      <span class="retailer-cta">Shop →</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Judy Savinar</div>
+  <div class="footer-contact">
+    <a href="mailto:judy@judysavinar.com">judy@judysavinar.com</a><br>
+    Portland, Oregon
+  </div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/judysavinar/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/in/judy-savinar-b43bb53/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p class="footer-copy">© 2025 Judy Savinar. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
